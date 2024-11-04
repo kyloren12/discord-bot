@@ -1,10 +1,11 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const fs = require('fs');
+require('dotenv').config(); // Make sure to require dotenv
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 
-const GROUPS = JSON.parse(process.env.GROUPS);
+const GROUPS = JSON.parse(process.env.GROUPS); // Ensure GROUPS is set in environment
 const previousMembers = {};
 
 client.login(process.env.DISCORD_BOT_TOKEN);
@@ -16,6 +17,9 @@ module.exports = async (req, res) => {
     }
     res.status(200).send('Checked for changes!');
 };
+
+// Include the rest of your functions here (checkForChanges, logToDiscord, saveCurrentMembers)
+
 
 async function checkForChanges(groupId, discordChannelId) {
     try {
