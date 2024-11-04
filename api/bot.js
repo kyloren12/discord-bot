@@ -18,9 +18,6 @@ module.exports = async (req, res) => {
     res.status(200).send('Checked for changes!');
 };
 
-// Include the rest of your functions here (checkForChanges, logToDiscord, saveCurrentMembers)
-
-
 async function checkForChanges(groupId, discordChannelId) {
     try {
         let currentMembers = new Map();
